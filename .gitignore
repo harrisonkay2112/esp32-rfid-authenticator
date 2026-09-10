@@ -1,0 +1,24 @@
+# Original local checkpoint contains personal configuration.
+/05.1Checkpoint/
+/BuzzerTest/
+/KeypadTest/
+/RFIDTEST/
+
+# Personal device configuration and credentials
+**/credentials.local.h
+.env
+.env.*
+*.pem
+*.key
+
+# Build artifacts and local editor files
+/build/
+.pio/
+.vscode/
+*.bin
+*.elf
+*.hex
+*.map
+*.o
+.DS_Store
+Thumbs.db
