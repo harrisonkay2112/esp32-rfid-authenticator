@@ -6,6 +6,19 @@ The project combines an MFRC522 RFID reader, a 4x4 keypad, a 20x4 I2C LCD, a DS1
 
 The published sketch compiles for the Arduino Nano ESP32 target with the local toolchain documented in [validation notes](docs/validation.md). Physical hardware operation has not been revalidated for this release.
 
+![Conceptual hardware layout showing the ESP32 controller, RFID reader, keypad, LCD, RTC, buzzer, and host computer](docs/assets/hardware-overview-final.png)
+
+*Illustrated component overview, not a photograph or verified wiring schematic. Dashed links represent communication interfaces.*
+
+## Documentation
+
+| Guide | Contents |
+| --- | --- |
+| [Hardware and connections](docs/hardware.md) | Illustrated overview, bus diagram, component inventory, pin reference, and wiring worksheet |
+| [Firmware architecture](docs/architecture.md) | State diagram, interaction sequence, function map, and implementation tradeoffs |
+| [Validation](docs/validation.md) | Compile results, completed checks, manual test plan, and test-record template |
+| [Demonstration guide](docs/demo-guide.md) | Steps for showing card rejection, PIN lockout, profile selection, and keyboard output |
+
 ## Features
 
 - Match a scanned RFID UID against a configured value.
@@ -48,6 +61,11 @@ firmware/
     esp32_authenticator.ino
     credentials.example.h
 docs/
+  assets/
+    hardware-overview-final.png
+  architecture.md
+  hardware.md
+  demo-guide.md
   validation.md
 ```
 

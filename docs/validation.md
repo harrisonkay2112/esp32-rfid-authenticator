@@ -52,3 +52,50 @@ These are planned checks, not completed test results.
 | Reboot during lockout | RAM state resets; this demonstrates a known limitation |
 
 Confirm that no credentials are entered into an unintended window. The firmware cannot identify the focused application or validate a server response.
+
+## Evidence summary
+
+| Check | Status | Evidence or limitation |
+| --- | --- | --- |
+| Compile with the documented local toolchain | Passed | Arduino CLI exit code 0 and storage/RAM summary above |
+| Public demonstration ciphertexts | Passed | Independent decryption matched the documented UID and PIN |
+| Publication credential scan | Passed | No original account values or original AES key/IV in the publication files |
+| Architecture and connection documentation | Source review | Derived from the published sketch; not a hardware measurement |
+| Physical pin mapping and voltage compatibility | Not tested | Exact board and module wiring not recorded |
+| RFID and keypad interactions on device | Not tested in this review | Requires wired hardware |
+| USB and BLE output on a host | Not tested in this review | Requires hardware and a disposable host form |
+| Replay resistance or secure-boot enforcement | Not established | No implementation/configuration or attack-test evidence included |
+
+## Test record template
+
+Use a separate record for each hardware session. Mark outcomes as Pass, Fail, or Not run; record what was observed rather than copying the expected behavior.
+
+```text
+Date:
+Firmware commit:
+Board model and revision:
+Board package and version:
+Pin-numbering mode:
+Library versions:
+Wiring reference:
+Host OS and keyboard layout:
+Transport (USB or BLE):
+Test case:
+Expected behavior:
+Observed behavior:
+Outcome:
+Evidence (sanitized serial capture, photo, or video):
+Notes / follow-up:
+```
+
+## Useful boundary checks
+
+- Submit an empty PIN, delete from an empty PIN, and attempt a seventh character.
+- Enter letter keys during PIN entry to confirm the current routine accepts them.
+- Verify that an invalid card does not increase the failed PIN count.
+- After a wrong PIN, authenticate correctly but cancel profile selection; confirm that cancellation does not reset the previous count.
+- Leave PIN entry or profile selection idle and confirm the current lack of a timeout.
+- Disconnect the host before selecting a profile. Record what the device displays and whether any output is received; the access-granted message alone is not proof of delivery.
+- After lockout expires, distinguish authentication readiness from the LCD content. `checkLockout()` clears the flags without calling `showIdle()`, so the prior display can remain until another UI action redraws it.
+
+These checks describe current edge cases and planned observations. They are not claims of completed testing.
