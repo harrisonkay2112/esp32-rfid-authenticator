@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080" role="img"><title>nano rfid wiring</title><style>text{font-family:Arial,Helvetica,sans-serif}</style><rect x="0" y="0" width="1600" height="1080" rx="0" fill="#f7f9fc" stroke="none" stroke-width="2"/>
+<text x="60" y="65" font-size="34" fill="#172a3a" text-anchor="start" font-weight="700">Nano ESP32 to MFRC522 reader</text>
+<text x="60" y="103" font-size="20" fill="#526371" text-anchor="start" font-weight="400">Use Arduino pin numbering. Connect by printed terminal name, not module connector position.</text>
+<text x="1540" y="65" font-size="17" fill="#526371" text-anchor="end" font-weight="600">01 / RFID</text>
+<rect x="60" y="126" width="1480" height="2" rx="8" fill="#d8e1e8" stroke="none" stroke-width="2"/>
+<rect x="220" y="220" width="230" height="660" rx="16" fill="#087f82" stroke="#086269" stroke-width="2"/>
+<circle cx="235" cy="237" r="7" fill="#fafafa" stroke="#c7d6d8" stroke-width="3"/>
+<circle cx="435" cy="237" r="7" fill="#fafafa" stroke="#c7d6d8" stroke-width="3"/>
+<circle cx="235" cy="862" r="7" fill="#fafafa" stroke="#c7d6d8" stroke-width="3"/>
+<circle cx="435" cy="862" r="7" fill="#fafafa" stroke="#c7d6d8" stroke-width="3"/>
+<rect x="292" y="198" width="86" height="65" rx="8" fill="#c2cbd2" stroke="#71808b" stroke-width="2"/>
+<rect x="305" y="201" width="60" height="12" rx="8" fill="#31414d" stroke="none" stroke-width="2"/>
+<text x="335" y="181" font-size="18" fill="#334155" text-anchor="middle" font-weight="400">USB-C / host</text>
+<rect x="273" y="594" width="124" height="183" rx="4" fill="#c2cbd2" stroke="#71808b" stroke-width="2"/>
+<text x="335" y="665" font-size="22" fill="#3d4a53" text-anchor="middle" font-weight="700">NORA</text>
+<text x="335" y="697" font-size="18" fill="#3d4a53" text-anchor="middle" font-weight="400">W106</text>
+<rect x="276" y="795" width="118" height="36" rx="8" fill="#6a9a51" stroke="none" stroke-width="2"/>
+<rect x="280" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="296" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="312" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="328" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="344" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="360" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="376" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="310" y="341" width="50" height="42" rx="8" fill="#1d2932" stroke="none" stroke-width="2"/>
+<rect x="300" y="435" width="58" height="30" rx="8" fill="#c2cbd2" stroke="none" stroke-width="2"/>
+<rect x="282" y="490" width="20" height="11" rx="2" fill="#d8c6aa" stroke="none" stroke-width="2"/>
+<rect x="364" y="490" width="20" height="11" rx="2" fill="#d8c6aa" stroke="none" stroke-width="2"/>
+<rect x="282" y="515" width="20" height="11" rx="2" fill="#d8c6aa" stroke="none" stroke-width="2"/>
+<rect x="364" y="515" width="20" height="11" rx="2" fill="#d8c6aa" stroke="none" stroke-width="2"/>
+<rect x="282" y="540" width="20" height="11" rx="2" fill="#d8c6aa" stroke="none" stroke-width="2"/>
+<rect x="364" y="540" width="20" height="11" rx="2" fill="#d8c6aa" stroke="none" stroke-width="2"/>
+<text x="335" y="294" font-size="21" fill="#fff" text-anchor="middle" font-weight="700">NANO</text>
+<text x="335" y="320" font-size="21" fill="#fff" text-anchor="middle" font-weight="700">ESP32</text>
+<circle cx="230" cy="270" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="270" r="3" fill="#fff"/>
+<text x="246" y="276" font-size="17" fill="#fff" text-anchor="start" font-weight="600">D13</text>
+<circle cx="230" cy="310" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="310" r="3" fill="#fff"/>
+<text x="246" y="316" font-size="17" fill="#fff" text-anchor="start" font-weight="600">3V3</text>
+<circle cx="230" cy="350" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="350" r="3" fill="#fff"/>
+<text x="246" y="356" font-size="17" fill="#fff" text-anchor="start" font-weight="600">B0</text>
+<circle cx="230" cy="390" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="390" r="3" fill="#fff"/>
+<text x="246" y="396" font-size="17" fill="#fff" text-anchor="start" font-weight="600">A0</text>
+<circle cx="230" cy="430" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="430" r="3" fill="#fff"/>
+<text x="246" y="436" font-size="17" fill="#fff" text-anchor="start" font-weight="600">A1</text>
+<circle cx="230" cy="470" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="470" r="3" fill="#fff"/>
+<text x="246" y="476" font-size="17" fill="#fff" text-anchor="start" font-weight="600">A2</text>
+<circle cx="230" cy="510" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="510" r="3" fill="#fff"/>
+<text x="246" y="516" font-size="17" fill="#fff" text-anchor="start" font-weight="600">A3</text>
+<circle cx="230" cy="550" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="550" r="3" fill="#fff"/>
+<text x="246" y="556" font-size="17" fill="#fff" text-anchor="start" font-weight="600">A4</text>
+<circle cx="230" cy="590" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="590" r="3" fill="#fff"/>
+<text x="246" y="596" font-size="17" fill="#fff" text-anchor="start" font-weight="600">A5</text>
+<circle cx="230" cy="630" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="630" r="3" fill="#fff"/>
+<text x="246" y="636" font-size="17" fill="#fff" text-anchor="start" font-weight="600">A6</text>
+<circle cx="230" cy="670" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="670" r="3" fill="#fff"/>
+<text x="246" y="676" font-size="17" fill="#fff" text-anchor="start" font-weight="600">A7</text>
+<circle cx="230" cy="710" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="710" r="3" fill="#fff"/>
+<text x="246" y="716" font-size="17" fill="#fff" text-anchor="start" font-weight="600">VUSB</text>
+<circle cx="230" cy="750" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="750" r="3" fill="#fff"/>
+<text x="246" y="756" font-size="17" fill="#fff" text-anchor="start" font-weight="600">B1</text>
+<circle cx="230" cy="790" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="790" r="3" fill="#fff"/>
+<text x="246" y="796" font-size="17" fill="#fff" text-anchor="start" font-weight="600">GND</text>
+<circle cx="230" cy="830" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="830" r="3" fill="#fff"/>
+<text x="246" y="836" font-size="17" fill="#fff" text-anchor="start" font-weight="600">VIN</text>
+<circle cx="440" cy="270" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="270" r="3" fill="#fff"/>
+<text x="424" y="276" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D12</text>
+<circle cx="440" cy="310" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="310" r="3" fill="#fff"/>
+<text x="424" y="316" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D11</text>
+<circle cx="440" cy="350" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="350" r="3" fill="#fff"/>
+<text x="424" y="356" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D10</text>
+<circle cx="440" cy="390" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="390" r="3" fill="#fff"/>
+<text x="424" y="396" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D9</text>
+<circle cx="440" cy="430" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="430" r="3" fill="#fff"/>
+<text x="424" y="436" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D8</text>
+<circle cx="440" cy="470" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="470" r="3" fill="#fff"/>
+<text x="424" y="476" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D7</text>
+<circle cx="440" cy="510" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="510" r="3" fill="#fff"/>
+<text x="424" y="516" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D6</text>
+<circle cx="440" cy="550" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="550" r="3" fill="#fff"/>
+<text x="424" y="556" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D5</text>
+<circle cx="440" cy="590" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="590" r="3" fill="#fff"/>
+<text x="424" y="596" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D4</text>
+<circle cx="440" cy="630" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="630" r="3" fill="#fff"/>
+<text x="424" y="636" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D3</text>
+<circle cx="440" cy="670" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="670" r="3" fill="#fff"/>
+<text x="424" y="676" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D2</text>
+<circle cx="440" cy="710" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="710" r="3" fill="#fff"/>
+<text x="424" y="716" font-size="17" fill="#fff" text-anchor="end" font-weight="600">GND</text>
+<circle cx="440" cy="750" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="750" r="3" fill="#fff"/>
+<text x="424" y="756" font-size="17" fill="#fff" text-anchor="end" font-weight="600">RESET</text>
+<circle cx="440" cy="790" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="790" r="3" fill="#fff"/>
+<text x="424" y="796" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D0/RX</text>
+<circle cx="440" cy="830" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="440" cy="830" r="3" fill="#fff"/>
+<text x="424" y="836" font-size="17" fill="#fff" text-anchor="end" font-weight="600">D1/TX</text>
+<text x="335" y="900" font-size="16" fill="#526371" text-anchor="middle" font-weight="700">TOP VIEW</text>
+<rect x="1040" y="205" width="460" height="685" rx="15" fill="#225eaa" stroke="#184376" stroke-width="2"/>
+<rect x="1230" y="240" width="230" height="195" rx="12" fill="none" stroke="#bdcce2" stroke-width="3"/>
+<rect x="1240" y="250" width="210" height="175" rx="12" fill="none" stroke="#bdcce2" stroke-width="3"/>
+<rect x="1250" y="260" width="190" height="155" rx="12" fill="none" stroke="#bdcce2" stroke-width="3"/>
+<rect x="1260" y="270" width="170" height="135" rx="12" fill="none" stroke="#bdcce2" stroke-width="3"/>
+<rect x="1270" y="280" width="150" height="115" rx="12" fill="none" stroke="#bdcce2" stroke-width="3"/>
+<rect x="1250" y="530" width="160" height="132" rx="3" fill="#152638" stroke="#738399" stroke-width="2"/>
+<text x="1330" y="590" font-size="20" fill="#fff" text-anchor="middle" font-weight="700">MFRC522</text>
+<text x="1330" y="619" font-size="17" fill="#c4d8ef" text-anchor="middle" font-weight="400">RFID reader</text>
+<circle cx="1070" cy="365" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="1070" cy="365" r="3" fill="#fff"/>
+<text x="1086" y="371" font-size="17" fill="#fff" text-anchor="start" font-weight="600">SDA / SS</text>
+<circle cx="1070" cy="422" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="1070" cy="422" r="3" fill="#fff"/>
+<text x="1086" y="428" font-size="17" fill="#fff" text-anchor="start" font-weight="600">SCK</text>
+<circle cx="1070" cy="479" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="1070" cy="479" r="3" fill="#fff"/>
+<text x="1086" y="485" font-size="17" fill="#fff" text-anchor="start" font-weight="600">MOSI</text>
+<circle cx="1070" cy="536" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="1070" cy="536" r="3" fill="#fff"/>
+<text x="1086" y="542" font-size="17" fill="#fff" text-anchor="start" font-weight="600">MISO</text>
+<circle cx="1070" cy="593" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="1070" cy="593" r="3" fill="#fff"/>
+<text x="1086" y="599" font-size="17" fill="#fff" text-anchor="start" font-weight="600">IRQ</text>
+<circle cx="1070" cy="650" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="1070" cy="650" r="3" fill="#fff"/>
+<text x="1086" y="656" font-size="17" fill="#fff" text-anchor="start" font-weight="600">GND</text>
+<circle cx="1070" cy="707" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="1070" cy="707" r="3" fill="#fff"/>
+<text x="1086" y="713" font-size="17" fill="#fff" text-anchor="start" font-weight="600">RST</text>
+<circle cx="1070" cy="764" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="1070" cy="764" r="3" fill="#fff"/>
+<text x="1086" y="770" font-size="17" fill="#fff" text-anchor="start" font-weight="600">3.3V</text>
+<text x="1270" y="848" font-size="17" fill="#dce9fa" text-anchor="middle" font-weight="400">Representative module layout</text>
+<text x="560" y="845" font-size="20" fill="#526371" text-anchor="start" font-weight="400">IRQ is not connected.</text>
+<rect x="60" y="982" width="1480" height="75" rx="8" fill="#e9eef4" stroke="none" stroke-width="2"/>
+<text x="80" y="1011" font-size="17" fill="#334155" text-anchor="start" font-weight="400">3.3 V power and logic for the reader. Never connect its 3.3V terminal to VUSB or VIN.</text>
+<text x="80" y="1038" font-size="17" fill="#334155" text-anchor="start" font-weight="400">Nano header order follows the official top-view pinout. Reader terminal positions vary by module.</text><path d="M440,350 H660 V365 H1070" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M440,350 H660 V365 H1070" fill="none" stroke="#d46a16" stroke-width="4" stroke-linecap="round"/><circle cx="440" cy="350" r="4" fill="#d46a16"/><circle cx="1070" cy="365" r="4" fill="#d46a16"/>
+<path d="M440,310 H620 V479 H1070" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M440,310 H620 V479 H1070" fill="none" stroke="#19805c" stroke-width="4" stroke-linecap="round"/><circle cx="440" cy="310" r="4" fill="#19805c"/><circle cx="1070" cy="479" r="4" fill="#19805c"/>
+<path d="M440,270 H580 V536 H1070" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M440,270 H580 V536 H1070" fill="none" stroke="#8454b3" stroke-width="4" stroke-linecap="round"/><circle cx="440" cy="270" r="4" fill="#8454b3"/><circle cx="1070" cy="536" r="4" fill="#8454b3"/>
+<path d="M440,390 H700 V707 H1070" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M440,390 H700 V707 H1070" fill="none" stroke="#00838b" stroke-width="4" stroke-linecap="round"/><circle cx="440" cy="390" r="4" fill="#00838b"/><circle cx="1070" cy="707" r="4" fill="#00838b"/>
+<path d="M230,270 H150 V160 H740 V422 H1070" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M230,270 H150 V160 H740 V422 H1070" fill="none" stroke="#2374c6" stroke-width="4" stroke-linecap="round"/><circle cx="230" cy="270" r="4" fill="#2374c6"/><circle cx="1070" cy="422" r="4" fill="#2374c6"/>
+<path d="M230,310 H120 V940 H820 V764 H1070" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M230,310 H120 V940 H820 V764 H1070" fill="none" stroke="#c92f35" stroke-width="4" stroke-linecap="round"/><circle cx="230" cy="310" r="4" fill="#c92f35"/><circle cx="1070" cy="764" r="4" fill="#c92f35"/>
+<path d="M230,790 H175 V914 H780 V650 H1070" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M230,790 H175 V914 H780 V650 H1070" fill="none" stroke="#334155" stroke-width="4" stroke-linecap="round"/><circle cx="230" cy="790" r="4" fill="#334155"/><circle cx="1070" cy="650" r="4" fill="#334155"/></svg>

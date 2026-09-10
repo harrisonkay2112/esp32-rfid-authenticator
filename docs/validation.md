@@ -16,7 +16,7 @@ A local Arduino CLI compile completed successfully on September 10, 2026 with th
 - Program storage: 816,593 bytes of 3,145,728 bytes (25%).
 - Static/global RAM: 49,152 bytes of 327,680 bytes (15%). This is not a measurement of peak runtime RAM use.
 
-The target is a compilation check, not evidence of the original board model. The installed HijelHID library advertises a newer upstream core requirement even though this local combination compiled. Compatibility with other core versions and runtime behavior remains to be checked.
+The original board has been identified as an Arduino Nano ESP32. This compile uses its default Arduino pin-numbering mode. The installed HijelHID library advertises a newer upstream core requirement even though this local combination compiled. Compatibility with other core versions and runtime behavior remains to be checked.
 
 The compiler reported that LiquidCrystal I2C declares AVR compatibility while this target uses ESP32. The build succeeded, but LCD operation still requires a hardware check.
 
@@ -61,7 +61,8 @@ Confirm that no credentials are entered into an unintended window. The firmware 
 | Public demonstration ciphertexts | Passed | Independent decryption matched the documented UID and PIN |
 | Publication credential scan | Passed | No original account values or original AES key/IV in the publication files |
 | Architecture and connection documentation | Source review | Derived from the published sketch; not a hardware measurement |
-| Physical pin mapping and voltage compatibility | Not tested | Exact board and module wiring not recorded |
+| Nano header and signal mapping | Documentation review | Checked against the official pinout and installed board variant; Arduino pin-numbering mode required |
+| Physical wiring and voltage compatibility | Not tested | I2C power and buzzer drawings are conditional reference circuits; actual modules and wiring need inspection |
 | RFID and keypad interactions on device | Not tested in this review | Requires wired hardware |
 | USB and BLE output on a host | Not tested in this review | Requires hardware and a disposable host form |
 | Replay resistance or secure-boot enforcement | Not established | No implementation/configuration or attack-test evidence included |

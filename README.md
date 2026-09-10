@@ -6,15 +6,15 @@ The project combines an MFRC522 RFID reader, a 4x4 keypad, a 20x4 I2C LCD, a DS1
 
 The published sketch compiles for the Arduino Nano ESP32 target with the local toolchain documented in [validation notes](docs/validation.md). Physical hardware operation has not been revalidated for this release.
 
-![Conceptual hardware layout showing the ESP32 controller, RFID reader, keypad, LCD, RTC, buzzer, and host computer](docs/assets/hardware-overview-final.png)
+![Nano ESP32 pins connected individually to the MFRC522 reader](docs/assets/nano-rfid-wiring.png)
 
-*Illustrated component overview, not a photograph or verified wiring schematic. Dashed links represent communication interfaces.*
+*Pin-to-pin reference based on the sketch and Nano pinout. See the [complete wiring guides](docs/hardware.md) for the keypad, LCD, RTC, and buzzer.*
 
 ## Documentation
 
 | Guide | Contents |
 | --- | --- |
-| [Hardware and connections](docs/hardware.md) | Illustrated overview, bus diagram, component inventory, pin reference, and wiring worksheet |
+| [Hardware and connections](docs/hardware.md) | Four illustrated wiring guides, bus diagram, pin mapping, and power references |
 | [Firmware architecture](docs/architecture.md) | State diagram, interaction sequence, function map, and implementation tradeoffs |
 | [Validation](docs/validation.md) | Compile results, completed checks, manual test plan, and test-record template |
 | [Demonstration guide](docs/demo-guide.md) | Steps for showing card rejection, PIN lockout, profile selection, and keyboard output |
@@ -62,7 +62,8 @@ firmware/
     credentials.example.h
 docs/
   assets/
-    hardware-overview-final.png
+    nano-*.png
+    nano-*.svg
   architecture.md
   hardware.md
   demo-guide.md
@@ -73,21 +74,21 @@ The firmware is a sanitized copy of the original checkpoint. Personal account va
 
 ## Hardware and pin assignments
 
-These are the pin identifiers in the sketch, not a verified physical wiring diagram. Their GPIO mapping depends on the selected board and pin-numbering mode.
+Select **Arduino Nano ESP32** and **Tools > Pin Numbering > By Arduino pin (default)**. Numeric pin identifiers in the sketch refer to Arduino pin labels in this mode, rather than ESP32 GPIO numbers.
 
 | Component signal | Sketch pin or setting |
 | --- | --- |
 | MFRC522 SS / SDA | `10` (SPI chip select, not I2C SDA) |
 | MFRC522 RST | `9` |
-| MFRC522 SCK, MOSI, MISO | Board defaults from `SPI.begin()` |
+| MFRC522 SCK, MOSI, MISO | `D13`, `D11`, `D12`, the Nano defaults from `SPI.begin()` |
 | Keypad rows, in order | `A1`, `A0`, `8`, `7` |
 | Keypad columns, in order | `6`, `5`, `4`, `2` |
 | Buzzer control | `3` |
 | LCD | I2C address `0x27`, 20 columns, 4 rows |
-| DS1307 RTC | Default I2C bus |
+| LCD and DS1307 bus | `A4` SDA, `A5` SCL |
 | Serial console | `9600` baud |
 
-USB keyboard output needs a board with native USB device support. Both USB and BLE are initialized at startup, so the selected target must support both. An ESP32-S3 board is a suitable family to investigate; the original board model and wiring are not recorded in this checkpoint. See [Espressif's USB documentation](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/usb.html) and [ESP32-S3 BLE documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-guides/ble/index.html).
+The original board was identified as an Arduino Nano ESP32, which provides native USB and BLE. Both keyboard interfaces are initialized at startup. The [hardware guide](docs/hardware.md) maps Arduino labels to GPIO numbers and documents the remaining module and power assumptions.
 
 Check pin conflicts, board voltage levels, and module pull-ups before connecting hardware. The existing pin assignments should not be copied blindly to a different board.
 
@@ -111,7 +112,7 @@ The sketch uses the Arduino framework and these libraries. Versions below were f
 ## Configuration and use
 
 1. Open `firmware/esp32_authenticator/esp32_authenticator.ino` in Arduino IDE.
-2. Select the actual board, confirm its native USB settings, and install compatible dependencies.
+2. Select Arduino Nano ESP32, set Pin Numbering to By Arduino pin (default), and install compatible dependencies.
 3. Review the pin mapping against the hardware.
 4. The sketch defaults to `credentials.example.h`, containing public demonstration profiles, UID `04 A1 B2 C3`, and PIN `123456`. An arbitrary card will not match that UID.
 5. To customize the configuration, copy that header to `credentials.local.h` in the same folder. The local header takes precedence and is excluded from Git. Keep experiments limited to disposable demonstration accounts.
