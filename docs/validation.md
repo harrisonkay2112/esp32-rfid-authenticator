@@ -8,8 +8,8 @@ The published copy uses ASCII Tab and newline writes for both keyboard transport
 
 ## Hardware validation history
 
-**The device was built, wired, and operated successfully on physical hardware during development
-in mid-2026.** The complete authentication flow ran end to end on the board: scanning a card,
+**The device was built, wired, and operated successfully on physical hardware in spring 2026.**
+The USB path was working on April 30, 2026; BLE output and profile selection on May 1, 2026. The complete authentication flow ran end to end on the board: scanning a card,
 rejecting an unrecognized UID, entering a PIN on the keypad with masked LCD feedback, triggering
 the three-failure lockout, browsing credential profiles, and typing the selected username and
 password to a host over the keyboard interface.
@@ -23,6 +23,27 @@ original checkpoint carried personal account values.
 credential sanitization, documentation, and a fresh compile. No board was wired up during that pass.
 Where this document says a check was "not re-run," it means not re-run *at publication time* — it
 does not mean the behavior was never observed on hardware.
+
+## As-built hardware configuration
+
+Recorded from the original build. Items marked *unconfirmed* were never measured or read directly
+and should be checked before anyone reproduces this.
+
+| Item | As built |
+| --- | --- |
+| Build surface | Full-size solderless breadboard with jumper wires; male-to-male wires to the keypad connector |
+| Power source | USB only. (A separate MB102 + 9V supply was started but never wired or tested.) |
+| MFRC522 supply | 3.3V rail |
+| LCD supply | `VIN` |
+| DS1307 supply | `VIN`. It was first tried on 3.3V and was not detected on the bus — the DS1307 is specified for 4.5–5.5V. |
+| `VIN` actual voltage | **Unconfirmed.** `VBUS` is the documented 5V-from-USB pin; whether `VIN` carries ~5V on USB power was never measured. |
+| Level shifting | None. A4/A5 go directly to the LCD and RTC. See the known electrical risk in the README limitations. |
+| External I2C pull-ups | None added. Whether the modules carry onboard pull-ups, and their values, was **unconfirmed.** |
+| Buzzer | Active buzzer (fixed tone when driven HIGH), driven directly from `D3` to GND. No transistor, no series resistor. Current draw at 3.3V was never measured. |
+| LCD | 20x4 (LCD2004) with pre-soldered I2C backpack, responding at `0x27`. That address is consistent with a PCF8574, but the chip marking was **unconfirmed.** |
+| RTC | DS1307 module, 5-pin (GND, VCC, SDA, SCL, SQW) with coin cell, found at `0x68` |
+| Keypad | 4x4 with ribbon cable to an 8-pin connector. Membrane vs. mechanical **unconfirmed.** |
+| Unused pins | MFRC522 `IRQ` and DS1307 `SQW` are not connected |
 
 ## Build status
 
@@ -84,7 +105,10 @@ Confirm that no credentials are entered into an unintended window. The firmware 
 | Nano header and signal mapping | Documentation review | Checked against the official pinout and installed board variant; Arduino pin-numbering mode required |
 | Physical wiring and voltage compatibility | Verified on the original build | Worked on the assembled board; the published I2C power and buzzer drawings are reference circuits and should be checked against your own modules |
 | RFID and keypad interactions on device | Verified on the original build | Card scan, UID rejection, and masked PIN entry all observed working on hardware |
-| USB and BLE output on a host | Verified on the original build | Credential output reached a host; not re-run during the 2026 publication pass |
+| USB keyboard output on a host | Verified on the original build | Typing confirmed into a Notepad window on Windows. Real login pages were not used as targets. |
+| BLE keyboard output on a host | Verified on the original build | Confirmed on Windows after the per-character write and raw-HID Tab/Enter fixes. Re-pairing was required after each reflash. |
+| 3-strike lockout and timestamped auth log on device | **Unconfirmed** | Implemented in firmware and the system ran end to end, but these specific behaviors were never isolated and confirmed in their own test |
+| RTC timekeeping | Verified standalone | The dedicated RTC test printed correct time once per second |
 | Replay resistance or secure-boot enforcement | Not established | No implementation/configuration or attack-test evidence included |
 
 ## Test record template

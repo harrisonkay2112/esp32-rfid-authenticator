@@ -4,7 +4,7 @@ An Arduino C++ prototype that checks an RFID card and keypad PIN before typing a
 
 The project combines an MFRC522 RFID reader, a 4x4 keypad, a 20x4 I2C LCD, a DS1307 real-time clock, and a buzzer. It explores peripheral integration, authentication flow, keyboard output, and timed lockout on an ESP32 platform.
 
-The device was built and run on physical hardware during development in mid-2026. The full authentication flow — card check, PIN entry, lockout, profile selection, and keyboard output — was exercised end to end on the wired board. Each peripheral was bench-tested on its own first (RFID reader, keypad, buzzer) before integration.
+The device was built and run on physical hardware in spring 2026 (USB path working April 30, 2026; BLE and profile selection May 1, 2026). The full authentication flow — card check, PIN entry, lockout, profile selection, and keyboard output — was exercised end to end on the wired board. Each peripheral was bench-tested on its own first (RFID reader, keypad, buzzer) before integration.
 
 The published sketch is a sanitized copy of that working build and compiles for the Arduino Nano ESP32 with the toolchain recorded in [validation notes](docs/validation.md). The September 2026 publication pass was documentation and credential sanitization only; it did not re-run the hardware tests, so the notes distinguish what was verified on the bench from what was re-checked at publication time.
 
@@ -145,6 +145,7 @@ This is a credential-entry prototype, not a FIDO2/WebAuthn authenticator or a pr
 - PIN entry and profile selection block the main loop. There is no input timeout, and mode switching is not serviced inside those screens.
 - The code prints card UIDs to Serial. It does not persist an audit log.
 - Startup status messages are not comprehensive peripheral health checks. The sketch does not check every initialization result or verify successful keyboard delivery.
-- This repository contains no secure-boot provisioning, firmware-signing configuration, flash-encryption configuration, or documented attack-test results.
+- The LCD and DS1307 were powered from `VIN` while the ESP32-S3 drives I2C at 3.3V, with no level shifter and no external pull-ups. If those modules' onboard pull-ups tie to their own supply, the bus idles above 3.3V on a part that is not 5V-tolerant. The build worked, but this is a known electrical risk rather than a validated design, and the actual `VIN` voltage was never measured.
+- Secure boot was deliberately not attempted: enabling it burns eFuses irreversibly, which was judged too risky for a prototype board. This repository contains no secure-boot provisioning, firmware-signing configuration, flash-encryption configuration, or documented attack-test results.
 
 These are design limitations of the prototype, not open defects. See [validation notes](docs/validation.md) for what was verified on hardware, the compile record, and a re-test checklist for anyone rebuilding it.
