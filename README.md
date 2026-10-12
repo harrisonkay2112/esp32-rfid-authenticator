@@ -149,3 +149,7 @@ This is a credential-entry prototype, not a FIDO2/WebAuthn authenticator or a pr
 - Secure boot was deliberately not attempted: enabling it burns eFuses irreversibly, which was judged too risky for a prototype board. This repository contains no secure-boot provisioning, firmware-signing configuration, flash-encryption configuration, or documented attack-test results.
 
 These are design limitations of the prototype, not open defects. See [validation notes](docs/validation.md) for what was verified on hardware, the compile record, and a re-test checklist for anyone rebuilding it.
+
+## License
+
+Released under the [MIT License](LICENSE). Third-party libraries listed above keep their own licenses.

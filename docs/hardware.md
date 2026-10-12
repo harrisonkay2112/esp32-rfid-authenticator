@@ -4,7 +4,7 @@ The original controller is an **Arduino Nano ESP32**. Select **Tools > Pin Numbe
 
 The drawings use the Nano's physical header order, viewed from above with USB-C at the top. Each colored line connects labeled terminals. Crossings without a junction dot are separate wires. Peripheral terminal positions are representative: connect by printed terminal name and check the actual connector order.
 
-The drawings were produced at publication time from the sketch and board documentation; they were not traced from the original breadboard. The RFID and keypad drawings match the pin assignments the prototype ran with. The I2C and buzzer drawings show recommended circuits that differ from the prototype, and each section says how.
+The drawings were produced at publication time from the sketch and board documentation; they were not traced from the original breadboard. The prototype was disassembled before publication, so the repository has no photographs of the build. The RFID and keypad drawings match the pin assignments the prototype ran with. The I2C and buzzer drawings show recommended circuits that differ from the prototype, and each section says how.
 
 ## RFID reader
 

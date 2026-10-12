@@ -11,17 +11,17 @@
 <rect x="292" y="198" width="86" height="65" rx="8" fill="#c2cbd2" stroke="#71808b" stroke-width="2"/>
 <rect x="305" y="201" width="60" height="12" rx="8" fill="#31414d" stroke="none" stroke-width="2"/>
 <text x="335" y="181" font-size="18" fill="#334155" text-anchor="middle" font-weight="400">USB-C / host</text>
-<rect x="273" y="594" width="124" height="183" rx="4" fill="#c2cbd2" stroke="#71808b" stroke-width="2"/>
-<text x="335" y="665" font-size="22" fill="#3d4a53" text-anchor="middle" font-weight="700">NORA</text>
-<text x="335" y="697" font-size="18" fill="#3d4a53" text-anchor="middle" font-weight="400">W106</text>
-<rect x="276" y="795" width="118" height="36" rx="8" fill="#6a9a51" stroke="none" stroke-width="2"/>
-<rect x="280" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
-<rect x="296" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
-<rect x="312" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
-<rect x="328" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
-<rect x="344" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
-<rect x="360" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
-<rect x="376" y="800" width="8" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="302" y="594" width="62" height="183" rx="4" fill="#c2cbd2" stroke="#71808b" stroke-width="2"/>
+<text x="333" y="665" font-size="18" fill="#3d4a53" text-anchor="middle" font-weight="700">NORA</text>
+<text x="333" y="693" font-size="15" fill="#3d4a53" text-anchor="middle" font-weight="400">W106</text>
+<rect x="296" y="795" width="72" height="36" rx="8" fill="#6a9a51" stroke="none" stroke-width="2"/>
+<rect x="301.0" y="800" width="5" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="310.5" y="800" width="5" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="320.0" y="800" width="5" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="329.5" y="800" width="5" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="339.0" y="800" width="5" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="348.5" y="800" width="5" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
+<rect x="358.0" y="800" width="5" height="23" rx="1" fill="#c8b77b" stroke="none" stroke-width="2"/>
 <rect x="310" y="341" width="50" height="42" rx="8" fill="#1d2932" stroke="none" stroke-width="2"/>
 <rect x="300" y="435" width="58" height="30" rx="8" fill="#c2cbd2" stroke="none" stroke-width="2"/>
 <rect x="282" y="490" width="20" height="11" rx="2" fill="#d8c6aa" stroke="none" stroke-width="2"/>
@@ -55,7 +55,7 @@
 <circle cx="230" cy="670" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="670" r="3" fill="#fff"/>
 <text x="246" y="676" font-size="17" fill="#fff" text-anchor="start" font-weight="600">A7</text>
 <circle cx="230" cy="710" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="710" r="3" fill="#fff"/>
-<text x="246" y="716" font-size="17" fill="#fff" text-anchor="start" font-weight="600">VUSB</text>
+<text x="246" y="716" font-size="17" fill="#fff" text-anchor="start" font-weight="600">VBUS</text>
 <circle cx="230" cy="750" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="750" r="3" fill="#fff"/>
 <text x="246" y="756" font-size="17" fill="#fff" text-anchor="start" font-weight="600">B1</text>
 <circle cx="230" cy="790" r="8" fill="#d8b468" stroke="#765726" stroke-width="2"/><circle cx="230" cy="790" r="3" fill="#fff"/>
@@ -121,7 +121,7 @@
 <text x="1270" y="848" font-size="17" fill="#dce9fa" text-anchor="middle" font-weight="400">Representative module layout</text>
 <text x="560" y="845" font-size="20" fill="#526371" text-anchor="start" font-weight="400">IRQ is not connected.</text>
 <rect x="60" y="982" width="1480" height="75" rx="8" fill="#e9eef4" stroke="none" stroke-width="2"/>
-<text x="80" y="1011" font-size="17" fill="#334155" text-anchor="start" font-weight="400">3.3 V power and logic for the reader. Never connect its 3.3V terminal to VUSB or VIN.</text>
+<text x="80" y="1011" font-size="17" fill="#334155" text-anchor="start" font-weight="400">3.3 V power and logic for the reader. Never connect its 3.3V terminal to VBUS or VIN.</text>
 <text x="80" y="1038" font-size="17" fill="#334155" text-anchor="start" font-weight="400">Nano header order follows the official top-view pinout. Reader terminal positions vary by module.</text><path d="M440,350 H660 V365 H1070" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M440,350 H660 V365 H1070" fill="none" stroke="#d46a16" stroke-width="4" stroke-linecap="round"/><circle cx="440" cy="350" r="4" fill="#d46a16"/><circle cx="1070" cy="365" r="4" fill="#d46a16"/>
 <path d="M440,310 H620 V479 H1070" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M440,310 H620 V479 H1070" fill="none" stroke="#19805c" stroke-width="4" stroke-linecap="round"/><circle cx="440" cy="310" r="4" fill="#19805c"/><circle cx="1070" cy="479" r="4" fill="#19805c"/>
 <path d="M440,270 H580 V536 H1070" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M440,270 H580 V536 H1070" fill="none" stroke="#8454b3" stroke-width="4" stroke-linecap="round"/><circle cx="440" cy="270" r="4" fill="#8454b3"/><circle cx="1070" cy="536" r="4" fill="#8454b3"/>
