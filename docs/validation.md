@@ -6,6 +6,24 @@ Repository preparation included source review, removal of personal configuration
 
 The published copy uses ASCII Tab and newline writes for both keyboard transports. This avoids passing raw HID usage IDs to the BLE library's ASCII `write()` API and avoids relying on conflicting USB/BLE key macros. The profile count is calculated from the configured array.
 
+## Hardware validation history
+
+**The device was built, wired, and operated successfully on physical hardware during development
+in mid-2026.** The complete authentication flow ran end to end on the board: scanning a card,
+rejecting an unrecognized UID, entering a PIN on the keypad with masked LCD feedback, triggering
+the three-failure lockout, browsing credential profiles, and typing the selected username and
+password to a host over the keyboard interface.
+
+Development followed an incremental bring-up order. Each peripheral was proven on its own before
+integration, with separate test sketches for the MFRC522 reader, the matrix keypad, and the buzzer,
+followed by an integrated checkpoint build. Those sketches stay out of version control because the
+original checkpoint carried personal account values.
+
+**Scope note for everything below.** The September 2026 work was a publication pass: source review,
+credential sanitization, documentation, and a fresh compile. No board was wired up during that pass.
+Where this document says a check was "not re-run," it means not re-run *at publication time* — it
+does not mean the behavior was never observed on hardware.
+
 ## Build status
 
 A local Arduino CLI compile completed successfully on September 10, 2026 with the demonstration configuration:
@@ -28,11 +46,13 @@ arduino-cli compile --fqbn arduino:esp32:nano_nora firmware/esp32_authenticator
 
 The public UID and PIN ciphertexts were independently decrypted and verified against their documented demonstration values. The publication files were also checked against the original local account values and AES material; no original values were included.
 
-No firmware has been uploaded during this review. No physical board, wiring, USB login sequence, or BLE pairing behavior has been tested during repository preparation.
+No firmware was uploaded during the September 2026 publication pass, and no board was wired up for it. The hardware behavior described above was established earlier, during development.
 
-## Manual hardware checks
+## Behavior reference and re-test checklist
 
-These are planned checks, not completed test results.
+These behaviors were exercised on hardware during original development. The table is kept as a
+re-test checklist for anyone rebuilding the device or changing the firmware — it is a specification
+of expected behavior, not a transcript of a specific test session.
 
 | Check | Expected behavior |
 | --- | --- |
@@ -60,11 +80,11 @@ Confirm that no credentials are entered into an unintended window. The firmware 
 | Compile with the documented local toolchain | Passed | Arduino CLI exit code 0 and storage/RAM summary above |
 | Public demonstration ciphertexts | Passed | Independent decryption matched the documented UID and PIN |
 | Publication credential scan | Passed | No original account values or original AES key/IV in the publication files |
-| Architecture and connection documentation | Source review | Derived from the published sketch; not a hardware measurement |
+| Architecture and connection documentation | Source review | Derived from the published sketch rather than re-measured on the board |
 | Nano header and signal mapping | Documentation review | Checked against the official pinout and installed board variant; Arduino pin-numbering mode required |
-| Physical wiring and voltage compatibility | Not tested | I2C power and buzzer drawings are conditional reference circuits; actual modules and wiring need inspection |
-| RFID and keypad interactions on device | Not tested in this review | Requires wired hardware |
-| USB and BLE output on a host | Not tested in this review | Requires hardware and a disposable host form |
+| Physical wiring and voltage compatibility | Verified on the original build | Worked on the assembled board; the published I2C power and buzzer drawings are reference circuits and should be checked against your own modules |
+| RFID and keypad interactions on device | Verified on the original build | Card scan, UID rejection, and masked PIN entry all observed working on hardware |
+| USB and BLE output on a host | Verified on the original build | Credential output reached a host; not re-run during the 2026 publication pass |
 | Replay resistance or secure-boot enforcement | Not established | No implementation/configuration or attack-test evidence included |
 
 ## Test record template
@@ -99,4 +119,4 @@ Notes / follow-up:
 - Disconnect the host before selecting a profile. Record what the device displays and whether any output is received; the access-granted message alone is not proof of delivery.
 - After lockout expires, distinguish authentication readiness from the LCD content. `checkLockout()` clears the flags without calling `showIdle()`, so the prior display can remain until another UI action redraws it.
 
-These checks describe current edge cases and planned observations. They are not claims of completed testing.
+These are edge cases worth probing on a rebuild. They are listed as open questions about the current implementation, not as defects observed on the original build.

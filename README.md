@@ -4,7 +4,9 @@ An Arduino C++ prototype that checks an RFID card and keypad PIN before typing a
 
 The project combines an MFRC522 RFID reader, a 4x4 keypad, a 20x4 I2C LCD, a DS1307 real-time clock, and a buzzer. It explores peripheral integration, authentication flow, keyboard output, and timed lockout on an ESP32 platform.
 
-The published sketch compiles for the Arduino Nano ESP32 target with the local toolchain documented in [validation notes](docs/validation.md). Physical hardware operation has not been revalidated for this release.
+The device was built and run on physical hardware during development in mid-2026. The full authentication flow — card check, PIN entry, lockout, profile selection, and keyboard output — was exercised end to end on the wired board. Each peripheral was bench-tested on its own first (RFID reader, keypad, buzzer) before integration.
+
+The published sketch is a sanitized copy of that working build and compiles for the Arduino Nano ESP32 with the toolchain recorded in [validation notes](docs/validation.md). The September 2026 publication pass was documentation and credential sanitization only; it did not re-run the hardware tests, so the notes distinguish what was verified on the bench from what was re-checked at publication time.
 
 ![Nano ESP32 pins connected individually to the MFRC522 reader](docs/assets/nano-rfid-wiring.png)
 
@@ -16,7 +18,7 @@ The published sketch compiles for the Arduino Nano ESP32 target with the local t
 | --- | --- |
 | [Hardware and connections](docs/hardware.md) | Four illustrated wiring guides, bus diagram, pin mapping, and power references |
 | [Firmware architecture](docs/architecture.md) | State diagram, interaction sequence, function map, and implementation tradeoffs |
-| [Validation](docs/validation.md) | Compile results, completed checks, manual test plan, and test-record template |
+| [Validation](docs/validation.md) | Hardware validation history, compile record, re-test checklist, and test-record template |
 | [Demonstration guide](docs/demo-guide.md) | Steps for showing card rejection, PIN lockout, profile selection, and keyboard output |
 
 ## Features
@@ -145,4 +147,4 @@ This is a credential-entry prototype, not a FIDO2/WebAuthn authenticator or a pr
 - Startup status messages are not comprehensive peripheral health checks. The sketch does not check every initialization result or verify successful keyboard delivery.
 - This repository contains no secure-boot provisioning, firmware-signing configuration, flash-encryption configuration, or documented attack-test results.
 
-Hardware behavior must be verified on the actual wired board. See [validation notes](docs/validation.md) for completed checks and a manual test plan.
+These are design limitations of the prototype, not open defects. See [validation notes](docs/validation.md) for what was verified on hardware, the compile record, and a re-test checklist for anyone rebuilding it.
