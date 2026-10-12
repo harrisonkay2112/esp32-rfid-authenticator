@@ -108,6 +108,7 @@ Confirm that no credentials are entered into an unintended window. The firmware 
 | USB keyboard output on a host | Verified on the original build | Typing confirmed into a Notepad window on Windows. Real login pages were not used as targets. |
 | BLE keyboard output on a host | Verified on the original build | Confirmed on Windows after the per-character write and raw-HID Tab/Enter fixes. Re-pairing was required after each reflash. |
 | 3-strike lockout and timestamped auth log on device | **Unconfirmed** | Implemented in firmware and the system ran end to end, but these specific behaviors were never isolated and confirmed in their own test |
+| Publication-time code changes (profile header, ASCII Tab/Enter writes) | Compiled only | Not run on hardware. The bench build sent Tab and Enter over BLE as raw HID codes `0x2B` and `0x28` |
 | RTC timekeeping | Verified standalone | The dedicated RTC test printed correct time once per second |
 | Replay resistance or secure-boot enforcement | Not established | No implementation/configuration or attack-test evidence included |
 

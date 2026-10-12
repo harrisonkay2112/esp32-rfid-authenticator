@@ -104,7 +104,7 @@
 <text x="1076" y="646" font-size="17" fill="#fff" text-anchor="start" font-weight="600">GND</text>
 <text x="590" y="813" font-size="21" fill="#526371" text-anchor="start" font-weight="400">D3 carries the control signal only.</text>
 <text x="590" y="847" font-size="20" fill="#526371" text-anchor="start" font-weight="400">A bare two-wire buzzer may need a separate driver.</text>
-<text x="590" y="879" font-size="20" fill="#526371" text-anchor="start" font-weight="400">Active buzzer, driven directly from D3.</text>
+<text x="590" y="879" font-size="20" fill="#526371" text-anchor="start" font-weight="400">The prototype itself used a two-wire active buzzer on D3.</text>
 <rect x="60" y="982" width="1480" height="75" rx="8" fill="#e9eef4" stroke="none" stroke-width="2"/>
 <text x="80" y="1011" font-size="17" fill="#334155" text-anchor="start" font-weight="400">This reference is conditional: use only with a module rated for 3.3 V supply and 3.3 V active-high input.</text>
 <text x="80" y="1038" font-size="17" fill="#334155" text-anchor="start" font-weight="400">Do not wire a bare buzzer directly to D3 using this drawing. Check its current and driver requirements.</text><path d="M440,630 H660 V450 H1060" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M440,630 H660 V450 H1060" fill="none" stroke="#8454b3" stroke-width="4" stroke-linecap="round"/><circle cx="440" cy="630" r="4" fill="#8454b3"/><circle cx="1060" cy="450" r="4" fill="#8454b3"/>

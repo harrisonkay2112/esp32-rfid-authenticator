@@ -6,7 +6,7 @@ The project combines an MFRC522 RFID reader, a 4x4 keypad, a 20x4 I2C LCD, a DS1
 
 The device was built and run on physical hardware in spring 2026 (USB path working April 30, 2026; BLE and profile selection May 1, 2026). The full authentication flow — card check, PIN entry, lockout, profile selection, and keyboard output — was exercised end to end on the wired board. Each peripheral was bench-tested on its own first (RFID reader, keypad, buzzer) before integration.
 
-The published sketch is a sanitized copy of that working build and compiles for the Arduino Nano ESP32 with the toolchain recorded in [validation notes](docs/validation.md). The September 2026 publication pass was documentation and credential sanitization only; it did not re-run the hardware tests, so the notes distinguish what was verified on the bench from what was re-checked at publication time.
+The published sketch is a sanitized copy of that working build and compiles for the Arduino Nano ESP32 with the toolchain recorded in [validation notes](docs/validation.md). Two code changes were made at publication and have been compiled but not run on hardware: credential profiles moved into a header, and Tab/Enter are sent as ASCII character writes (the bench build sent them over BLE as raw HID codes). The September 2026 publication pass was documentation and credential sanitization only; it did not re-run the hardware tests, so the notes distinguish what was verified on the bench from what was re-checked at publication time.
 
 ![Nano ESP32 pins connected individually to the MFRC522 reader](docs/assets/nano-rfid-wiring.png)
 

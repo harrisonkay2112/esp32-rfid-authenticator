@@ -4,7 +4,7 @@ The original controller is an **Arduino Nano ESP32**. Select **Tools > Pin Numbe
 
 The drawings use the Nano's physical header order, viewed from above with USB-C at the top. Each colored line connects labeled terminals. Crossings without a junction dot are separate wires. Peripheral terminal positions are representative: connect by printed terminal name and check the actual connector order.
 
-The guides were checked against the sketch and board documentation. They have not been verified against a powered assembly or a photograph of the original wiring.
+The drawings were produced at publication time from the sketch and board documentation; they were not traced from the original breadboard. The RFID and keypad drawings match the pin assignments the prototype ran with. The I2C and buzzer drawings show recommended circuits that differ from the prototype, and each section says how.
 
 ## RFID reader
 
@@ -38,7 +38,9 @@ R4      *   0   #   D
 
 The sketch uses SDA on A4 and SCL on A5 for both devices. The LCD is configured for 20 columns, four rows, and address `0x27`.
 
-This is a proposed circuit for a 5 V LCD backpack and DS1307 module. The original power arrangement and backpack revision are unknown. The DS1307 requires a 4.5-5.5 V VCC supply; Nano GPIO uses 3.3 V logic. A bidirectional I2C level shifter separates the two pull-up voltage domains. Use a shifter intended for open-drain I2C with suitable pull-ups on both sides.
+**This is the recommended circuit, not the one the prototype used.** As built, the LCD and DS1307 were powered from `VIN`, and SDA/SCL ran straight to A4/A5 with no level shifter and no added pull-ups. That worked on the bench, but it leaves the bus voltage unverified on a 3.3 V part; see the limitations in the README. The DS1307 was first tried on 3.3 V and did not respond, which is consistent with its 4.5-5.5 V supply requirement.
+
+The drawing shows the arrangement recommended for a rebuild. Nano GPIO uses 3.3 V logic, so a bidirectional I2C level shifter separates the two pull-up voltage domains. Use a shifter intended for open-drain I2C with suitable pull-ups on both sides.
 
 The Nano receives power through USB in this reference. A regulated 5 V supply powers the modules and shifter HV terminal; Nano 3V3 powers the shifter LV reference. Both sides share ground. Check module current requirements, existing pull-ups, and RTC battery/charging circuitry before assembly. Do not connect 5 V pull-ups directly to Nano GPIO.
 
@@ -48,7 +50,7 @@ The Nano receives power through USB in this reference. A regulated 5 V supply po
 
 [Editable SVG](assets/nano-buzzer-reference.svg)
 
-The code drives D3 HIGH and LOW for feedback pulses. This drawing applies only to an active-high, three-terminal active buzzer module rated for 3.3 V supply and input. The original buzzer type is not confirmed. A bare two-wire buzzer may need a separate transistor driver depending on its current requirements; this diagram does not specify that circuit. Include the module load when checking the Nano's 3.3 V supply budget.
+The code drives D3 HIGH and LOW for feedback pulses. **The prototype used a two-terminal active buzzer wired directly between D3 and GND**, with no transistor and no series resistor; its current draw at 3.3 V was never measured. The drawing shows the safer arrangement for a rebuild: an active-high, three-terminal active buzzer module rated for 3.3 V supply and input, so the GPIO carries only the control signal. A bare two-wire buzzer may need a separate transistor driver depending on its current requirements; this diagram does not specify that circuit. Include the module load when checking the Nano's 3.3 V supply budget.
 
 ## Signal mapping
 
@@ -90,19 +92,19 @@ flowchart LR
     MCU -. BLE HID .-> Host
 ```
 
-## Remaining hardware checks
+## Hardware status
 
 | Item | Status |
 | --- | --- |
 | Board family | Arduino Nano ESP32 confirmed; exact revision not recorded |
 | Pin-numbering mode | Arduino mode required; check IDE setting |
 | SPI and I2C signal mapping | Checked against board variant and official pinout |
-| Actual power rails, grounds, and current budget | Requires inspection |
-| LCD backpack, RTC pull-ups, and level translation | Requires module identification |
-| Keypad connector order | Requires inspection |
-| Buzzer module and driver requirements | Requires module identification |
+| Power rails and current budget | As built: USB power, MFRC522 on 3.3 V, LCD and DS1307 on `VIN`. `VIN` voltage and total current were never measured |
+| LCD backpack, RTC pull-ups, and level translation | No level shifter or external pull-ups as built. Onboard pull-ups and the backpack chip marking are unconfirmed |
+| Keypad connector order | Works with rows A1, A0, D8, D7 and columns D6, D5, D4, D2. The first attempt had the order reversed and produced wrong keys |
+| Buzzer | Two-terminal active buzzer driven directly from D3 as built. Current draw unmeasured |
 
-Use the [manual test plan](validation.md#manual-hardware-checks) after checking the electrical connections.
+Use the [re-test checklist](validation.md#behavior-reference-and-re-test-checklist) after checking the electrical connections on a rebuild.
 
 ## References
 
